@@ -1,17 +1,32 @@
-using System.Runtime.InteropServices;
+using Microsoft.EntityFrameworkCore;
 
-// In SDK-style projects such as this one, several assembly attributes that were historically
-// defined in this file are now automatically added during build and populated with
-// values defined in project properties. For details of which attributes are included
-// and how to customise this process see: https://aka.ms/assembly-info-properties
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+    public virtual DbSet<Person> Persons { get; set; }
+    public virtual DbSet<Place> Places { get; set; }
 
-// Setting ComVisible to false makes the types in this assembly not visible to COM
-// components.  If you need to access a type in this assembly from COM, set the ComVisible
-// attribute to true on that type.
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Person>()
+            .HasOne(p => p.PlaceOfBirth)
+            .WithMany(b => b.PeopleBornHere)
+            .HasForeignKey(p => p.PlaceOfBirthId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-[assembly: ComVisible(false)]
+        modelBuilder.Entity<Person>()
+            .HasOne(p => p.PlaceOfResidence)
+            .WithMany(r => r.PeopleLivingHere)
+            .HasForeignKey(p => p.PlaceOfResidenceId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM.
+        modelBuilder.Entity<Person>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
 
-[assembly: Guid("d3a9c0f8-fe3c-4fb5-ac3b-5a4f075a236a")]
+        modelBuilder.Entity<Place>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+    }
+}

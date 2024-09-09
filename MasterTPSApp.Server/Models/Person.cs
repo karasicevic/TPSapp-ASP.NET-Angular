@@ -1,23 +1,21 @@
-using System;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.RegularExpressions;
 
 public class Person
 {
     [Key]
-    [Required]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long Id { get; set; }
 
     [Required]
     [StringLength(33)]
-    [RegularExpression(@"^[A-Z][a-zA-Z]*$", ErrorMessage = "Name must start with an uppercase letter.")]
+    [RegularExpression(@"^[A-ZČĆŽŠĐ][a-zA-ZčćžšđČĆŽŠĐ]*$", ErrorMessage = "Name must start with an uppercase letter.")]
+
     public string Name { get; set; }
 
     [Required]
     [StringLength(33)]
-    [RegularExpression(@"^[A-Z][a-zA-Z]*$", ErrorMessage = "Surname must start with an uppercase letter.")]
+    [RegularExpression(@"^[A-ZČĆŽŠĐ][a-zA-ZčćžšđČĆŽŠĐ]*$", ErrorMessage = "Surname must start with an uppercase letter.")]
     public string Surname { get; set; }
 
     [Required]
@@ -29,16 +27,19 @@ public class Person
     [StringLength(13, MinimumLength = 13, ErrorMessage = "JMBG must be exactly 13 characters.")]
     [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG must be numeric and exactly 13 digits.")]
     public string PersonalIdNumber { get; set; }
-
+    [Required]
+    [Range(20, 300, ErrorMessage = "Height must be between 20 and 300.")]
     public long Height { get; set; }
 
-    [NotMapped]
-    public int Age => CalculateAge(BirthDate);
-
+    [Required]
     public long PlaceOfBirthId { get; set; }
+
     public long? PlaceOfResidenceId { get; set; }
 
+    [ForeignKey("PlaceOfBirthId")]
     public Place PlaceOfBirth { get; set; }
+
+    [ForeignKey("PlaceOfResidenceId")]
     public Place PlaceOfResidence { get; set; }
 
     private static int CalculateAge(DateTime birthDate)

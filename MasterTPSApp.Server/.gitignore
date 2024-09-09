@@ -1,0 +1,37 @@
+﻿# Build artefakti
+bin/
+obj/
+*.dll
+*.exe
+
+# User-specifične postavke
+.vscode/
+*.user
+*.rsuser
+*.suo
+
+# Visual Studio temp fajlovi
+*.pdb
+*.opendb
+*.VC.db
+
+# Paket menadžeri
+packages/
+node_modules/
+
+# Logovi i privremeni fajlovi
+*.log
+*.tmp
+
+# .NET generisani fajlovi
+project.lock.json
+project.fragment.lock.json
+*.cache
+
+# Konfiguracioni fajlovi i tajne
+appsettings.*.json
+secrets.json
+
+# OS-specifični fajlovi
+.DS_Store
+Thumbs.db

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MasterTPSApp.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53194fa6338011b911fe0dc31868506035ca8047")]
 [assembly: System.Reflection.AssemblyProductAttribute("MasterTPSApp.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MasterTPSApp.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
