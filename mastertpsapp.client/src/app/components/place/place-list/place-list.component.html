@@ -1,0 +1,30 @@
+<div>
+  <button mat-raised-button color="primary" [routerLink]="['/places/new']">
+    Add New Place
+  </button>
+</div>
+<div *ngIf="places.length > 0; else noPlaces">
+  <mat-list>
+    <mat-list-item *ngFor="let place of places" class="place-item">
+      <div class="place-details">
+        <h3>{{ place.name }}</h3>
+        <p>Postal Code: {{ place.postalCode }}</p>
+        <p>Population: {{ place.population }}</p>
+      </div>
+      <div class="place-actions">
+        <button mat-icon-button color="primary" (click)="viewPlace(place.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="editPlace(place.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deletePlace(place.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+<ng-template #noPlaces>
+  <p>No places available.</p>
+</ng-template>

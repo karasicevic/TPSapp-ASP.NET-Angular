@@ -1,0 +1,19 @@
+<div *ngIf="place; else loading">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ place.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Postal Code: {{ place.postalCode }}</p>
+      <p>Population: {{ place.population }}</p>
+      <h3>Statistics</h3>
+      <p>Average Height: {{ stats?.averageHeight | number:'1.2-2' }} cm</p>
+      <p>Minimum Height: {{ stats?.minimumHeight }} cm</p>
+      <p>Maximum Height: {{ stats?.maximumHeight }} cm</p>
+      <p>Average Age: {{ stats?.averageAge | number:'1.2-2' }} years</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

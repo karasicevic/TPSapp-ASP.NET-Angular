@@ -1,0 +1,18 @@
+.place-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px;
+  border-bottom: 1px solid #ddd;
+}
+
+.place-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.place-actions {
+  display: flex;
+  gap: 8px;
+}

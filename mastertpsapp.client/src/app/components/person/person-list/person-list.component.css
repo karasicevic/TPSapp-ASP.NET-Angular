@@ -1,0 +1,18 @@
+.person-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px;
+  border-bottom: 1px solid #ddd;
+}
+
+.person-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.person-actions {
+  display: flex;
+  gap: 8px;
+}

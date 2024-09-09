@@ -1,0 +1,96 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Edit Person' : 'Add Person' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="personForm.get('name')?.hasError('required')">
+          Name is required.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('name')?.hasError('maxlength')">
+          Name cannot be longer than 33 characters.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('name')?.hasError('pattern')">
+          Name must start with an uppercase letter.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname">
+        <mat-error *ngIf="personForm.get('surname')?.hasError('required')">
+          Surname is required.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('surname')?.hasError('maxlength')">
+          Surname cannot be longer than 33 characters.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('surname')?.hasError('pattern')">
+          Surname must start with an uppercase letter.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Birth Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="personForm.get('birthDate')?.hasError('required')">
+          Birth Date is required.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('birthDate')?.hasError('futureDate')">
+          Birth Date cannot be in the future.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Personal ID Number</mat-label>
+        <input matInput formControlName="personalIdNumber">
+        <mat-error *ngIf="personForm.get('personalIdNumber')?.hasError('required')">
+          Personal ID Number is required.
+        </mat-error>
+        <mat-error *ngIf="personForm.get('personalIdNumber')?.hasError('pattern')">
+          Personal ID Number must be exactly 13 digits.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Height (cm)</mat-label>
+        <input matInput type="number" formControlName="height">
+        <mat-error *ngIf="personForm.get('height')?.hasError('required')">
+          Height is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Place of Birth</mat-label>
+        <mat-select formControlName="placeOfBirthId">
+          <mat-option *ngFor="let place of places" [value]="place.id">
+            {{ place.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="personForm.get('placeOfBirthId')?.hasError('required')">
+          Place of Birth is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Place of Residence</mat-label>
+        <mat-select formControlName="placeOfResidenceId">
+          <mat-option *ngFor="let place of places" [value]="place.id">
+            {{ place.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="personForm.get('placeOfResidenceId')?.hasError('required')">
+          Place of residence is required.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="personForm.invalid">
+        Save
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<mat-card *ngIf="person; else loading">
+  <mat-card-header>
+    <mat-card-title>Person Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Name:</strong> {{ person.name }} {{ person.surname }}</p>
+    <p><strong>Birth Date:</strong> {{ person.birthDate | date }}</p>
+    <p><strong>Personal ID Number:</strong> {{ person.personalIdNumber }}</p>
+    <p><strong>Height:</strong> {{ person.height }} cm</p>
+    <p> <strong>Place of Birth:</strong> {{ getPlaceName(person.placeOfBirthId) }}</p>
+    <p ><strong>Place of Residence:</strong> {{ getPlaceName(person.placeOfResidenceId) }}</p>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loading>
+  <mat-card>
+    <mat-card-content>
+      <p>Loading...</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

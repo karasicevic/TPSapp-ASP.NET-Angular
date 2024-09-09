@@ -1,0 +1,32 @@
+<form [formGroup]="placeForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label for="name">Name</mat-label>
+    <input matInput id="name" formControlName="name">
+    <mat-error *ngIf="placeForm.get('name')?.invalid && placeForm.get('name')?.touched">
+      <span *ngIf="placeForm.get('name')?.hasError('required')">Name is required.</span>
+      <span *ngIf="placeForm.get('name')?.hasError('maxlength')">Name cannot be longer than 40 characters.</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="postalCode">Postal Code</mat-label>
+    <input matInput id="postalCode" formControlName="postalCode">
+    <mat-error *ngIf="placeForm.get('postalCode')?.invalid && placeForm.get('postalCode')?.touched">
+      <span *ngIf="placeForm.get('postalCode')?.hasError('required')">Postal Code is required.</span>
+      <span *ngIf="placeForm.get('postalCode')?.hasError('min')">Postal Code cannot be less than 11000.</span>
+      <span *ngIf="placeForm.get('postalCode')?.hasError('max')">Postal Code cannot be more than 45000.</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="population">Population</mat-label>
+    <input matInput id="population" formControlName="population">
+    <mat-error *ngIf="placeForm.get('population')?.invalid && placeForm.get('population')?.touched">
+      <span *ngIf="placeForm.get('population')?.hasError('required')">Population is required.</span>
+      <span *ngIf="placeForm.get('population')?.hasError('min')">Population cannot be less than 0.</span>
+      <span *ngIf="placeForm.get('population')?.hasError('max')">Population cannot be more than 2000000.</span>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="placeForm.invalid">Save</button>
+</form>

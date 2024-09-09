@@ -1,0 +1,38 @@
+<div>
+  <button mat-raised-button color="primary" [routerLink]="['/person-form']">
+    Add New Person
+  </button>
+</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Persons</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="persons.length > 0; else noPersons" >
+      <mat-list>
+        <mat-list-item *ngFor="let person of persons" class="person-item">
+          <div class="person-details">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div mat-line>{{ person.name }} {{ person.surname }}</div>
+            <div mat-line> Place of Residence: {{ getPlaceName(person.placeOfResidenceId) }}</div>
+            <div mat-line> Height: {{ person.height }} cm</div>
+          </div>
+          <div class="person-actions">
+            <button mat-icon-button color="primary" (click)="viewPerson(person.id)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="editPerson(person.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deletePerson(person.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <ng-template #noPersons>
+      <p>No persons available.</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
