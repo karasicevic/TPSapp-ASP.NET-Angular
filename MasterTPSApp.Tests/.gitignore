@@ -1,0 +1,30 @@
+﻿# Build artefakti
+bin/
+obj/
+*.dll
+*.exe
+
+# Visual Studio privremeni fajlovi
+.vscode/
+*.user
+*.suo
+*.sln.ide
+*.log
+
+# Paket menadžeri
+packages/
+node_modules/
+
+# Temp podaci i rezultati testova
+TestResults/
+*.trx
+*.coverage
+*.xunit.runner.json
+
+# Ignoriši poverljive podatke
+appsettings.*.json
+secrets.json
+
+# OS-specifični fajlovi
+.DS_Store
+Thumbs.db
