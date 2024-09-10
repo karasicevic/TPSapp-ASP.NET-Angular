@@ -141,7 +141,7 @@ public class PlaceServiceTests
 
             await context.SaveChangesAsync();
 
-            var service = new PersonService(context);
+            var service = new PlaceService(context);
             var avgHeight = await service.GetAverageHeightAsync(2);
 
             Assert.Equal(170, avgHeight);
@@ -179,7 +179,7 @@ public class PlaceServiceTests
 
             await context.SaveChangesAsync();
 
-            var service = new PersonService(context);
+            var service = new PlaceService(context);
             var avgAge = await service.GetAverageAgeAsync(2);
 
             Assert.Equal(32, Double.Round(avgAge));
