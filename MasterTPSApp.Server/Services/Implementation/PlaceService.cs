@@ -64,11 +64,6 @@ public class PlaceService : IPlaceService
             return 0;
         }
 
-        //var sql = "SELECT dbo.AverageHeight(@PlaceId) as Value";
-        //var parameter = new SqlParameter("@PlaceId", placeId);
-
-        //var resultList = await _context.Database
-        //    .SqlQueryRaw<double>(sql, parameter).FirstOrDefault();
 
 
         var sql = "SELECT dbo.AverageHeight(@PlaceId)";
