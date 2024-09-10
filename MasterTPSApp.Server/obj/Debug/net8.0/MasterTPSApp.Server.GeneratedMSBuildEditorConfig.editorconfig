@@ -17,3 +17,7 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\Korisnik\source\repos\MasterTPSApp\MasterTPSApp.Server
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Korisnik/AppData/Roaming/SonarLint for Visual Studio/Bindings/MasterTPSApp/csharp/SonarLint.xml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
